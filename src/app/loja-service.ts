@@ -1,20 +1,18 @@
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Produto } from './produto';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class LojaService {
-  private APIURL = 'http://localhost:3000'
-  private http = inject(HttpClient)
+  private http = inject(HttpClient);
+  private url = 'http://localhost:3000/produtos';
 
   obterProdutos(): Observable<Produto[]> {
-    return this.http.get<Produto[]>(`${this.APIURL}/produtos`)
+    return this.http.get<Produto[]>(this.url);
   }
 
-  obterProdutoPorId(id: number): Observable<Produto> {
-    return this.http.get<Produto>(`${this.APIURL}/produtos/${id}`)
+  obterProduto(id: number): Observable<Produto> {
+    return this.http.get<Produto>(`${this.url}/${id}`);
   }
 }
