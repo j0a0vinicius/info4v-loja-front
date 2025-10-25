@@ -1,7 +1,8 @@
-export type Produto = {
-    id: number
-    nome: string
-    marca: string
-    preco: number
-    quantidade: number
+export interface Produto {
+  id: number;
+  nome: string;
+  marca: string;
+  preco: number;
+  quantidade: number;
+  descricao: string;
 }
