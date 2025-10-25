@@ -1,13 +1,22 @@
-<h2 class="titulo">🛒 Produtos disponíveis</h2>
+<h2 class="titulo">🛍️ Produtos disponíveis</h2>
+
+<div class="busca-id mb-4">
+  <div class="input-container">
+    <i class="bi bi-search"></i>
+    <input type="number" [(ngModel)]="idBusca" placeholder="Digite o ID do produto" />
+    <button class="btn-buscar" (click)="buscarPorId()">
+      <i class="bi bi-arrow-right"></i> Ir
+    </button>
+  </div>
+</div>
 
 <div class="lista-produtos">
   <div class="card" *ngFor="let produto of produtos">
     <h3><i class="bi bi-box-seam"></i> {{ produto.nome }}</h3>
     <p><i class="bi bi-tag-fill"></i> Marca: {{ produto.marca }}</p>
     <p class="preco"><i class="bi bi-cash-stack"></i> R$ {{ produto.preco | number:'1.2-2' }}</p>
-    <p><i class="bi bi-stack"></i> Estoque: {{ produto.quantidade }}</p>
 
-    <a [routerLink]="['/produto', produto.id]">
+    <a [routerLink]="['/produto', produto.id]" class="btn-ver-detalhes">
       <i class="bi bi-eye"></i> Ver detalhes
     </a>
   </div>

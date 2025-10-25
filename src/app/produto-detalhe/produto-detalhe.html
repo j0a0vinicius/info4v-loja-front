@@ -1,15 +1,27 @@
-<div *ngIf="produto; else loading">
-  <h2><i class="bi bi-box-seam"></i> {{ produto.nome }}</h2>
-  <p><i class="bi bi-tag-fill"></i> Marca: {{ produto.marca }}</p>
-  <p><i class="bi bi-cash-stack"></i> Preço: R$ {{ produto.preco | number:'1.2-2' }}</p>
-  <p><i class="bi bi-stack"></i> Estoque: {{ produto.quantidade }}</p>
-  <p><i class="bi bi-info-circle"></i> {{ produto.descricao }}</p>
+<div *ngIf="produto; else loading" class="container mt-4">
+  <div class="card produto-card shadow-sm p-3">
+    <div class="card-body">
+      <h2 class="card-title mb-3">
+        <i class="bi bi-box-seam text-primary me-2"></i> {{ produto.nome }}
+      </h2>
 
-  <a routerLink="/" class="btn-voltar">
-    <i class="bi bi-arrow-left"></i> Voltar para a loja
-  </a>
+      <p><i class="bi bi-tag-fill text-primary me-2"></i>Marca: {{ produto.marca }}</p>
+      <p><i class="bi bi-cash-stack text-primary me-2"></i>Preço: R$ {{ produto.preco | number:'1.2-2' }}</p>
+      <p><i class="bi bi-stack text-primary me-2"></i>Estoque: {{ produto.quantidade }}</p>
+      <p><i class="bi bi-info-circle text-primary me-2"></i>{{ produto.descricao }}</p>
+
+      <a routerLink="/" class="btn btn-primary mt-3">
+        <i class="bi bi-arrow-left me-2"></i> Voltar para a loja
+      </a>
+    </div>
+  </div>
 </div>
 
 <ng-template #loading>
-  <p>Carregando produto...</p>
+  <div class="text-center mt-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Carregando...</span>
+    </div>
+    <p class="mt-2">Carregando produto...</p>
+  </div>
 </ng-template>
