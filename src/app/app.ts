@@ -6,15 +6,13 @@ import { LojaService } from './loja-service';
   selector: 'app-root',
   imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
 export class App {
   protected title = 'Loja';
+  loja = inject(LojaService);
 
-  loja = inject(LojaService)
   constructor() {
-    this.loja.obterProdutos().subscribe(res => {
-      console.log(res)
-    })
+    this.loja.obterProdutos().subscribe(res => console.log(res));
   }
 }
